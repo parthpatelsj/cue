@@ -1,35 +1,16 @@
 .cue-container {
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    gap: 10px;
+    grid-template-columns: 0.5fr 1.5fr 0.8fr 3fr 1.5fr 0.4fr 0.4fr 0.4fr 0.4fr 1fr; /* Adjust the fr units as needed */
+    gap: 15px;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.cue-container div,
-.cue-container input,
-.cue-container label {
-    margin: 2px;
+.duration-input {
+    width: 60%;
 }
 
-.cue-label {
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-/* Smaller inputs for duration, audio, video, image, text */
-.duration-input, .av-checkbox {
-    width: 80%; /* Adjust as needed */
-}
-
-/* Larger input for description */
-.description-input {
-    width: 100%; /* Adjust as needed */
-}
-
-/* Checkbox styling for AV inputs */
 .av-checkbox {
-    transform: scale(0.8); /* Make checkboxes smaller */
+    transform: scale(0.7);
 }
-
-/* Additional styling for inputs, checkboxes, and layout */

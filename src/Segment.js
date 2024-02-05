@@ -5,13 +5,15 @@ const Segment = () => {
     const [cues, setCues] = useState([]);
     const [initialStartTime, setInitialStartTime] = useState('');
 
-    const addCue = useCallback((startTime) => {
+    // The addCue function now just adds a new cue without a start time
+    const addCue = () => {
         const newCue = {
             id: cues.length,
-            startTime: startTime || (cues.length > 0 ? cues[cues.length - 1].endTime : ''),
+            startTime: cues.length === 0 ? initialStartTime : cues[cues.length - 1].endTime,
         };
         setCues([...cues, newCue]);
-    }, [cues]);
+    };
+
 
     useEffect(() => {
         if (cues.length === 0 && initialStartTime) {
@@ -30,11 +32,15 @@ const Segment = () => {
 
     return (
         <div>
-            <input type="time" value={initialStartTime} onChange={e => setInitialStartTime(e.target.value)} placeholder="Initial Start Time" />
             {cues.map((cue, index) => (
-                <Cue key={cue.id} cueNumber={index + 1} startTime={cue.startTime} updateNextStartTime={(endTime) => updateNextStartTime(endTime, index)} />
+                <Cue 
+                    key={cue.id} 
+                    cueNumber={index + 1} 
+                    startTime={cue.startTime} // This now depends on the initial start time or the previous cue's end time
+                    updateNextStartTime={(endTime) => updateNextStartTime(endTime, index)} 
+                />
             ))}
-            <button onClick={() => addCue()}>Add Cue</button>
+            <button onClick={addCue}>Add Cue</button>
         </div>
     );
 };
