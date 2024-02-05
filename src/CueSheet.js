@@ -4,7 +4,7 @@ import CueSheetHeader from './CueSheetHeader';
 import './CueSheet.css'; // Adjust the path according to your file structure
 
 const CueSheet = () => {
-    const [headerData, setHeaderData] = useState({});
+    const [, setHeaderData] = useState({});
     const [segments, setSegments] = useState([]);
     const [initialStartTime, setInitialStartTime] = useState(''); // Added for the initial start time of the cue sheet
 

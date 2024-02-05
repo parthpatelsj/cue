@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react'; // Import useCallback
 import Cue from './Cue';
 
 const Segment = () => {
     const [cues, setCues] = useState([]);
-    const [initialStartTime, setInitialStartTime] = useState('');
+    const [initialStartTime, ] = useState('');
 
-    // The addCue function now just adds a new cue without a start time
-    const addCue = () => {
+    const addCue = useCallback(() => {
         const newCue = {
             id: cues.length,
             startTime: cues.length === 0 ? initialStartTime : cues[cues.length - 1].endTime,
         };
         setCues([...cues, newCue]);
-    };
+    }, [cues, initialStartTime]); // Include cues and initialStartTime as dependencies
+    
 
 
     useEffect(() => {
