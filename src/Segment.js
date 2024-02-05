@@ -36,6 +36,7 @@ const Segment = () => {
                 <Cue 
                     key={cue.id} 
                     cueNumber={index + 1} 
+                    initialStartTime={initialStartTime} // Pass initial start time to each Cue
                     startTime={cue.startTime} // This now depends on the initial start time or the previous cue's end time
                     updateNextStartTime={(endTime) => updateNextStartTime(endTime, index)} 
                 />
