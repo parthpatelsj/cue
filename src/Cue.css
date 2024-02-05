@@ -1,0 +1,35 @@
+.cue-container {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cue-container div,
+.cue-container input,
+.cue-container label {
+    margin: 2px;
+}
+
+.cue-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Smaller inputs for duration, audio, video, image, text */
+.duration-input, .av-checkbox {
+    width: 80%; /* Adjust as needed */
+}
+
+/* Larger input for description */
+.description-input {
+    width: 100%; /* Adjust as needed */
+}
+
+/* Checkbox styling for AV inputs */
+.av-checkbox {
+    transform: scale(0.8); /* Make checkboxes smaller */
+}
+
+/* Additional styling for inputs, checkboxes, and layout */
