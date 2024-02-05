@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Cue from './Cue';
 
 const Segment = () => {
     const [cues, setCues] = useState([]);
-    const [initialStartTime, setInitialStartTime] = useState(''); // For user to set initial start time
+    const [initialStartTime, setInitialStartTime] = useState('');
 
-    useEffect(() => {
-        if (cues.length === 0 && initialStartTime) {
-            addCue(initialStartTime); // Add the first cue with the initial start time
-        }
-    }, [initialStartTime]);
-
-    const addCue = (startTime) => {
+    const addCue = useCallback((startTime) => {
         const newCue = {
             id: cues.length,
             startTime: startTime || (cues.length > 0 ? cues[cues.length - 1].endTime : ''),
         };
         setCues([...cues, newCue]);
-    };
+    }, [cues]);
+
+    useEffect(() => {
+        if (cues.length === 0 && initialStartTime) {
+            addCue(initialStartTime);
+        }
+    }, [initialStartTime, addCue, cues.length]);
 
     const updateNextStartTime = (endTime, cueId) => {
         setCues(cues.map((cue, index) => {
