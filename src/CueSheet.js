@@ -4,9 +4,9 @@ import CueSheetHeader from './CueSheetHeader';
 import './CueSheet.css';
 
 const CueSheet = () => {
-  const [, setHeaderData] = useState({});
+  const [headerData, setHeaderData] = useState({});
   const [segments, setSegments] = useState([]);
-  const [initialStartTime, setInitialStartTime] = useState('16:00'); // Set default value to 4:00pm
+  const [initialStartTime, setInitialStartTime] = useState('16:00');
 
   const handleHeaderChange = (data) => {
     setHeaderData(data);
@@ -26,6 +26,21 @@ const CueSheet = () => {
       }
       return segment;
     }));
+  };
+
+  const exportData = () => {
+    const data = {
+      ...headerData,
+      initialStartTime,
+      segments,
+    };
+    const jsonString = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'cue_sheet_data.json';
+    link.click();
   };
 
   return (
@@ -54,6 +69,7 @@ const CueSheet = () => {
         />
       ))}
       <button onClick={addSegment}>Add Segment</button>
+      <button onClick={exportData}>Export</button>
     </div>
   );
 };
