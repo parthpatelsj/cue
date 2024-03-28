@@ -3,74 +3,69 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-/* Body Styling for Global Font and Background */
-body {
-    font-family: Arial, sans-serif;
+  }
+  
+  /* Body Styling for Global Font and Background */
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
     background-color: #f4f4f4;
     line-height: 1.6;
-}
-
-/* Container for the Whole App */
-.app-container {
+  }
+  
+  /* Container for the Whole App */
+  .app-container {
     width: 90%;
     margin: auto;
-    overflow-x: auto; /* Ensures the table is scrollable on smaller devices */
-}
-/* Adjust the grid template columns to size fields appropriately */
-.cue-container {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 2fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr; /* Adjust the fr units as needed */
-    gap: 10px;
-    align-items: center;
-    background-color: white;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+    overflow-x: auto;
+  }
 
-/* Smaller inputs for duration, audio, video, image, text */
-.duration-input, .av-checkbox {
-    width: 80%; /* Adjust as needed */
-}
-
-/* Larger input for description */
-.description-input {
-    width: 100%; /* Adjust as needed */
-}
-
-/* Checkbox styling for AV inputs */
-.av-checkbox {
-    transform: scale(0.8); /* Make checkboxes smaller */
-}
-
-
-/* Label and Input Field Styling */
-.cue-label, .cue-container input, .cue-container select, .cue-container checkbox {
+  .cue-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Smaller inputs for duration, audio, video, image, text */
+  .duration-input,
+  .av-checkbox {
+    width: 80%;
+  }
+  
+  /* Larger input for description */
+  .description-input {
+    width: 100%;
+  }
+  
+  /* Checkbox styling for AV inputs */
+  .av-checkbox {
+    transform: scale(0.8);
+  }
+  
+  /* Label and Input Field Styling */
+  .cue-label,
+  .cue-container input,
+  .cue-container select,
+  .cue-container checkbox {
     font-size: 0.9rem;
     margin: 5px;
-}
-
-/* Button Styling */
-button {
+  }
+  
+  /* Button Styling */
+  button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
-}
-
-button:hover {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
     background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
     .cue-container {
-        grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns for mobile view */
+      grid-template-columns: repeat(4, 1fr);
     }
-    /* Other styles for mobile view */
-}
+  }

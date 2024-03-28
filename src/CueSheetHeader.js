@@ -1,54 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CueSheetHeader.css';
 
 const CueSheetHeader = ({ onHeaderChange }) => {
+  const [title, setTitle] = useState('');
+  const [theme, setTheme] = useState('');
+  const [location, setLocation] = useState('');
+  const [date, setDate] = useState('');
 
-    const handleBlur = (name) => (e) => {
-        onHeaderChange({ [name]: e.target.textContent });
-    };
+  const handleChange = (name) => (e) => {
+    const value = e.target.value;
+    switch (name) {
+      case 'title':
+        setTitle(value);
+        break;
+      case 'theme':
+        setTheme(value);
+        break;
+      case 'location':
+        setLocation(value);
+        break;
+      case 'date':
+        setDate(value);
+        break;
+      default:
+        break;
+    }
+    onHeaderChange({ [name]: value });
+  };
 
-    return (
-        <div className="cue-sheet-header">
-            <div
-                name="title"
-                contentEditable
-                onBlur={handleBlur('title')}
-                className="header-title"
-                suppressContentEditableWarning={true}
-            >
-                <span className="placeholder">Click to add an event title</span>
-            </div>
-            <div
-                name="theme"
-                contentEditable
-                onBlur={handleBlur('theme')}
-                className="header-theme"
-                suppressContentEditableWarning={true}
-            >
-                <span className="placeholder">Click to add a theme</span>
-            </div>
-            <div className="location-date-container">
-                <div
-                    name="location"
-                    contentEditable
-                    onBlur={handleBlur('location')}
-                    className="header-location"
-                    suppressContentEditableWarning={true}
-                >
-                    <span className="placeholder">Click to add a location</span>
-                </div>
-                <div
-                    name="date"
-                    contentEditable
-                    onBlur={handleBlur('date')}
-                    className="header-date"
-                    suppressContentEditableWarning={true}
-                >
-                    <span className="placeholder">Click to add a date</span>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <div className="cue-sheet-header">
+      <input
+        type="text"
+        value={title}
+        onChange={handleChange('title')}
+        className="header-title"
+        placeholder="Enter event title"
+      />
+      <input
+        type="text"
+        value={theme}
+        onChange={handleChange('theme')}
+        className="header-theme"
+        placeholder="Enter theme"
+      />
+      <div className="location-date-container">
+        <input
+          type="text"
+          value={location}
+          onChange={handleChange('location')}
+          className="header-location"
+          placeholder="Enter location"
+        />
+        <input
+          type="date"
+          value={date}
+          onChange={handleChange('date')}
+          className="header-date"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default CueSheetHeader;

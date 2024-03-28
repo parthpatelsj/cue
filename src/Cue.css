@@ -1,16 +1,54 @@
 .cue-container {
-    grid-template-columns: 0.5fr 1.5fr 0.8fr 3fr 1.5fr 0.4fr 0.4fr 0.4fr 0.4fr 1fr; /* Adjust the fr units as needed */
-    gap: 15px;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1.5fr 3fr 1fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 1.5fr;
+    gap: 10px;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.duration-input {
-    width: 60%;
-}
-
-.av-checkbox {
-    transform: scale(0.7);
-}
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .cue-container:hover {
+    transform: translateY(-3px);
+  }
+  
+  .cue-container label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .duration-input,
+  .description-input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .duration-input:focus,
+  .description-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  .av-checkbox {
+    transform: scale(1.1);
+  }
+  
+  .start-time,
+  .end-time {
+    font-weight: bold;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .cue-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
